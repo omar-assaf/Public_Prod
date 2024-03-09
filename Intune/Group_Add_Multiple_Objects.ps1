@@ -7,14 +7,15 @@
 #  |___|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|___| 
 # (_____)                                  (_____)
 #
-###################################################
-# This script will let you add a list devices enrolled
-# in intune using only thier serial numbers to security
-# groups, using MSGraph powerShell  
 ####################################################
 #	X: omar_assaf
-# 
-#
+#    Omar Assaf
+# You can distribute or re-use in any way, as long 
+# as you give credit to initial script author ;)
+####################################################
+# This script will let you add a list devices enrolled
+# in intune using only thier serial numbers to security
+# groups, using MSGraph powerShell.
 ####################################################
 #Connect MS GRAPH Powershell SDK
 Connect-MgGraph
