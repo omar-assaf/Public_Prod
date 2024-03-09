@@ -13,6 +13,9 @@
 # You can distribute or re-use in any way, as long 
 # as you give credit to initial script author ;)
 ####################################################
+# Script to force cleaning of chrome before install
+# Also it forces 64 bit over 32
+####################################################
 # Define variables for clarity and flexibility
 $chrome32Path = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
 $chrome64Path = "C:\Program Files\Google\Chrome\Application\chrome.exe"
@@ -20,7 +23,6 @@ $chrome64Path = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 # Check if 32-bit Chrome is installed
 if (Test-Path $chrome32Path) {
     Write-Host "Found 32-bit Chrome. Uninstalling..."
-
     # Uninstall 32-bit Chrome gracefully
     try {
         $Chrome = Get-WmiObject  Win32_Product | Where-Object {$_.Name -like '*Chrome*' }
@@ -35,7 +37,6 @@ if (Test-Path $chrome32Path) {
         Write-Warning "Error uninstalling 32-bit Chrome: $($_.Exception.Message)"
     }
 }
-
 # Check if 64-bit Chrome is installed
 if (!(Test-Path $chrome64Path)) {
 Write-Host "Installing 64-bit Chrome..."
@@ -53,7 +54,6 @@ try {
     catch {
     Write-Error "Error installing 64-bit Chrome: $($_.Exception.Message)"
     }
-
 }
  else {
     Write-Host "64-bit Chrome already installed."
