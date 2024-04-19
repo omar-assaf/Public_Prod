@@ -42,9 +42,9 @@ Write-Host "Installing 64-bit Chrome..."
 # Initiate Chrome 64-bit installation
 try {
     New-Item -Path "C:\ProgramData\MSF\Logs" -ItemType Directory -Force > $null
-    $mstPath = "$PSScriptRoot\OCB_Chrome.mst"
-    $msiPath = "$PSScriptRoot\OCB_Chrome.msi"
-    $arguments = "TRANSFORMS=$mstPath /qn /norestart /quiet /L*V C:\ProgramData\MSF\Logs\installation_Chrome.log"
+    $mstPath = "$PSScriptRoot\Chrome.mst"
+    $msiPath = "$PSScriptRoot\Chrome.msi"
+    $arguments = "TRANSFORMS=$mstPath /qn /norestart /quiet /L*V C:\ProgramData\Logs\installation_Chrome.log"
     $SetupChrome = Start-Process -FilePath "msiexec.exe" -ArgumentList "/i `"$msiPath`" $arguments" -PassThru -NoNewWindow -Wait -ErrorAction SilentlyContinue
     If ($SetupChrome.ExitCode -ine 0) {
         Write-Error "Installation failed with a customized chrome package"
