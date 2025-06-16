@@ -23,6 +23,11 @@
     Feel free to use this, But would be grateful if My name is mentioned in Notes 
 #>
 
+# Get the current user and timestamp
+$executedBy = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+$executionTime = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+$executionComment = "Created by $executedBy on $executionTime"
+
 # Default attribute values
 $defaultAttributes = @{
     Description          = "Default Description"
@@ -67,12 +72,14 @@ foreach ($user in $users) {
 
     # Create the user
     New-ADUser @userParams
-    # Set extension attributes
+
+    # Set additional attributes and comment
     Set-ADUser -Identity $user.SamAccountName -Replace @{
         extensionAttribute5 = $userAttributes["extensionAttribute5"]
         extensionAttribute6 = $userAttributes["extensionAttribute6"]
         extensionAttribute7 = $userAttributes["extensionAttribute7"]
         extensionAttribute8 = $userAttributes["extensionAttribute8"]
+        info                = $executionComment
     }
 
     # Add user to group
