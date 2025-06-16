@@ -1,6 +1,6 @@
 <#PSScriptInfo
 .SYNOPSIS
-    Script to Map Objects for AAD joined computers
+    Create AD Users
 
 .DESCRIPTION
     This script will create user accounts from csv file
